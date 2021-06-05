@@ -21,7 +21,7 @@ private static final String EXCEPTION_STR_FMT = "Exception: %s"; // Then another
 
 Best of all, `Str.format()` is benchmarked at [_over 6x faster_](https://docs.google.com/spreadsheets/d/1JRzrd1Zg731FyFR1mDesbG92YXBgDZcpPaMTyMu6v7s/edit?usp=sharing) than using `String.format()`.
 
-<img src="docs/strlib-graph.png" width="50%">
+<img src="docs/strlib-benchmark.png" width="50%">
 
 ### Other Nice Things
 
