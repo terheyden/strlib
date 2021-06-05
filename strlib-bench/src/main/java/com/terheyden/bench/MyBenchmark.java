@@ -51,27 +51,23 @@ import com.terheyden.str.Str;
 
 @OutputTimeUnit(TimeUnit.SECONDS)
 @BenchmarkMode({ Mode.Throughput })
-@Warmup(iterations = 3)
+@Warmup(iterations = 5)
 @Fork(value = 1)
 @State(Scope.Benchmark)
 public class MyBenchmark {
 
-    private static final int LOOPS = 1000;
-    private static final String NAME = "Cora";
-    private static final StringBuilder TITLE = new StringBuilder().append("Miss");
+    private static final int LOOPS = 10_000;
 
     @Benchmark
     public int pluses() {
 
-        UUID goodId = UUID.randomUUID();
-        UUID badId = null;
+        UUID uuid = UUID.randomUUID();
+        String name = uuid.toString();
         int counter = 0;
 
         for (int i = 0; i < LOOPS; i++) {
-            String s1 = "Hello " + TITLE + " " + NAME + ", you are " + counter + " for " + counter + " years.";
-            String s2 = "Your ID is " + goodId + ", not " + badId + ".";
-            String s3 = TITLE + ", " + NAME + ", " + counter + ", " + goodId + ", " + badId + ", " + i;
-            counter += s1.length() + s2.length() + s3.length();
+            String str = "User ID = " + uuid + " with name " + name + " is " + counter + " years old. Today is the " + counter + " day of the month of " + name + " in the year " + counter + "!";
+            counter += str.length();
         }
 
         return counter;
@@ -80,15 +76,13 @@ public class MyBenchmark {
     @Benchmark
     public int stringFormat() {
 
-        UUID goodId = UUID.randomUUID();
-        UUID badId = null;
+        UUID uuid = UUID.randomUUID();
+        String name = uuid.toString();
         int counter = 0;
 
         for (int i = 0; i < LOOPS; i++) {
-            String s1 = String.format("Hello %s %s, you are %d for %d years.", TITLE, NAME, counter, counter);
-            String s2 = String.format("Your ID is %s, not %s.", goodId, badId);
-            String s3 = String.format("%s, %s, %d, %s, %s, %d", TITLE, NAME, counter, goodId, badId, i);
-            counter += s1.length() + s2.length() + s3.length();
+            String str = String.format("User ID = %s with name %s is %d years old. Today is the %d day of the month of %s in the year %d!", uuid, name, counter, counter, name, counter);
+            counter += str.length();
         }
 
         return counter;
@@ -97,15 +91,13 @@ public class MyBenchmark {
     @Benchmark
     public int strFormat() {
 
-        UUID goodId = UUID.randomUUID();
-        UUID badId = null;
+        UUID uuid = UUID.randomUUID();
+        String name = uuid.toString();
         int counter = 0;
 
         for (int i = 0; i < LOOPS; i++) {
-            String s1 = Str.format("Hello {} {}, you are {} for {} years.", TITLE, NAME, counter, counter);
-            String s2 = Str.format("Your ID is {}, not {}.", goodId, badId);
-            String s3 = Str.format("{}, {}, {}, {}, {}, {}", TITLE, NAME, counter, goodId, badId, i);
-            counter += s1.length() + s2.length() + s3.length();
+            String str = Str.format("User ID = {} with name {} is {} years old. Today is the {} day of the month of {} in the year {}!", uuid, name, counter, counter, name, counter);
+            counter += str.length();
         }
 
         return counter;
@@ -114,15 +106,13 @@ public class MyBenchmark {
     @Benchmark
     public int formattedString() {
 
-        UUID goodId = UUID.randomUUID();
-        UUID badId = null;
+        UUID uuid = UUID.randomUUID();
+        String name = uuid.toString();
         int counter = 0;
 
         for (int i = 0; i < LOOPS; i++) {
-            String s1 = "Hello %s %s, you are %d for %d years.".formatted(TITLE, NAME, counter, counter);
-            String s2 = "Your ID is %s, not %s.".formatted(goodId, badId);
-            String s3 = "%s, %s, %d, %s, %s, %d".formatted(TITLE, NAME, counter, goodId, badId, i);
-            counter += s1.length() + s2.length() + s3.length();
+            String str = "User ID = %s with name %s is %d years old. Today is the %d day of the month of %s in the year %d!".formatted(uuid, name, counter, counter, name, counter);
+            counter += str.length();
         }
 
         return counter;

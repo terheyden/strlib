@@ -237,7 +237,7 @@ public final class Str {
             return formatStr;
         }
 
-        // We make a generous guess at the end size for a performance gain.
+        // We make a generous guess at the end size for performance.
         StringBuilder build = new StringBuilder(formatStr.length() + 10 * formatArgs.length);
         int argOff = 0;
         int startOff = 0;
