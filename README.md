@@ -76,3 +76,11 @@ the String, separated by a space, e.g.:
 ```java
 Str.format("Numbers:", 1, 2, 3); // "Numbers:1 2 3"
 ```
+
+### _How do I escape a `"{}"` in my String?_
+
+Put a backslash in front of it:
+
+```java
+Str.format("{} \\{} {}", "red", "blue"); // "red {} blue"
+```
