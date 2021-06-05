@@ -5,7 +5,7 @@
 
     <artifactId>strlib</artifactId>
     <groupId>com.terheyden</groupId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>strlib</name>
     <url>https://github.com/terheyden/strlib</url>
     <description>Fast easy String formatting</description>
