@@ -9,7 +9,7 @@ Str.format("User ID: {}", userId);
 ```
 
 We use the same formatting rules as `Log4J` / `SLF4J`,
-so you should rarely need to mix format styles:
+so you should rarely need to mix format styles anymore:
 
 ```java
 // Example - mixed String format styles can be annoying.
@@ -39,7 +39,7 @@ Best of all, `Str.format()` is benchmarked at [_over 6x faster_](https://docs.go
 <dependency>
     <groupId>com.terheyden</groupId>
     <artifactId>strlib</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 </dependency>
 ```
 
@@ -47,14 +47,14 @@ Best of all, `Str.format()` is benchmarked at [_over 6x faster_](https://docs.go
 
 ```groovy
 // https://mvnrepository.com/artifact/com.terheyden/strlib
-implementation group: 'com.terheyden', name: 'strlib', version: '0.0.2'
+implementation group: 'com.terheyden', name: 'strlib', version: '0.0.3'
 ```
 
 ## Details
 
 ### _How does `Str.format()` handle nulls?_
 
-`Str.format()` simply outputs `null` for null parameters, e.g.:
+`Str.format()` prints `null` for null parameters, same as `String.format()`, e.g.:
 
 ```java
 Str.format("User name: {}", null); // "User name: null"
@@ -70,7 +70,7 @@ Str.format("{} and {} and {}", "one", "two"); // "one and two and {}"
 
 ### _How are too many parameters handled?_
 
-It's important that you not lose any data, so extra parameters are simply appended to the end of
+It's important that you not lose any data, so extra parameters are appended to the end of
 the String, separated by a space, e.g.:
 
 ```java
@@ -84,3 +84,8 @@ Put a backslash in front of it:
 ```java
 Str.format("{} \\{} {}", "red", "blue"); // "red {} blue"
 ```
+
+## What's New
+
+### v0.0.3
+- Cleaned up the explicit vararg signatures; they were confusing
